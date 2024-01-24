@@ -12,7 +12,7 @@ mp_drawing_styles = mp.solutions.drawing_styles
 
 hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 
-DATA_DIR = 'C:\\Users\\Radziulek\\Desktop\\data'
+DATA_DIR = os.getcwd() + '\\data'
 
 data = []
 labels = []

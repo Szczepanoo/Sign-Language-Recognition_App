@@ -1,5 +1,4 @@
 import os
-
 import cv2
 
 
@@ -7,7 +6,7 @@ DATA_DIR = os.getcwd() + '\\data'
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
 
-number_of_classes = 2
+number_of_classes = 24
 dataset_size = 200
 
 cap = cv2.VideoCapture(0)
