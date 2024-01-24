@@ -63,16 +63,16 @@ while True:
         x2 = int(max(x_) * W) + 10
         y2 = int(max(y_) * H) + 10
 
-        if len(data_aux) == 42:
-            prediction = model.predict([np.asarray(data_aux)])
-        else:
-            prediction = model.predict([np.asarray(data_aux)])
+
+        prediction = model.predict([np.asarray(data_aux)])
+        probabilities = model.predict_proba([np.asarray(data_aux)])
 
 
         predicted_character = labels_dict[int(prediction[0])]
+        probability_of_prediction = np.max(probabilities)
 
         cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 0), 4)
-        cv2.putText(frame, predicted_character, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 0, 0), 3, cv2.LINE_AA)
+        cv2.putText(frame, predicted_character + " - " + str(probability_of_prediction), (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 0, 0), 3, cv2.LINE_AA)
 
     cv2.imshow('Sign language recognition app', frame)
     key = cv2.waitKey(1)
